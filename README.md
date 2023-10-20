@@ -12,8 +12,10 @@
 [![MIT License][license-shield]][license-url]
 
 This repository contains an application designed to showcase the resource storage system for an AI scheduler that
-automates the creation of schedules for professors, classrooms, and other resources in educational institutions. This
-project utilizes Node.js with Express.js and TypeORM as the primary development stack and supports MySQL and MongoDB.
+automates the creation of schedules for professors, classrooms, and other resources in educational institutions.
+
+This branch of the project exists only to demonstrate only the most crucial functionality of the project whilst
+requiring only minimal configuration in order to get it running.
 
 ## Technologies Used
 
@@ -25,17 +27,17 @@ project utilizes Node.js with Express.js and TypeORM as the primary development 
     - [Jest](https://jestjs.io/): A JavaScript testing framework.
 
 - **Databases**:
-    - [MySQL](https://www.mysql.com/): A widely used relational database management system.
-    - [MongoDB](https://www.mongodb.com/): An open source NoSQL database management program.
+    - [SQLite](https://www.sqlite.org/index.html): A C-language library that implements a self-contained SQL database
+      engine.
 
 ## Getting Started
 
 To run this application locally, follow these steps:
 
-1. Clone the repository to your local machine:
+1. Clone this branch of the repository to your local machine:
 
     ```bash
-    git clone https://github.com/Kawtious/RhytaServerJS.git
+    git clone --branch minimal-configuration --single-branch https://github.com/Kawtious/RhytaServerJS.git
     ```
 
 2. Change into the project directory:
@@ -51,15 +53,17 @@ To run this application locally, follow these steps:
     npm install
     ```
 
-4. Configure the Databases:
+4. (Optional) Configure the server:
 
-   Configure the databases by following the instructions in
-   the [Configuring Database Connections](#configuring-database-connections) section of this README.
+   If you wish to configure where the server is hosted, follow these instructions:
 
-5. Configure the server:
+   In the root directory of the project, create a `.env` file:
 
-   If you followed the instructions in [Configuring Database Connections](#configuring-database-connections), you can
-   just open the `.env` file once again using a text editor and add the following environment variables:
+    ```bash
+    touch .env
+    ```
+
+   Open the `.env` file using a text editor and add the following environment variables:
 
     ```plaintext
     SERVER_HOST="your_server_host"             # "localhost"
@@ -68,68 +72,17 @@ To run this application locally, follow these steps:
 
    Replace `your_server_host`, and `your_server_port` with your preferred connection details.
 
-6. Configure JWT:
-
-   In the `.env` file, add the following environment variables:
-
-    ```plaintext
-    JWT_SECRET="your_jwt_secret"                 # "AVeeeeeeeeeeeeeryLongSecret"
-    JWT_EXPIRATION="your_jwt_expiration_time"    # "1h"
-    ```
-
-   Replace `your_jwt_secret`, and `your_jwt_expiration_time` with your preferred JWT details.
-
-7. Build the application:
+5. Build the application:
 
     ```bash
     npm run build
     ```
 
-8. Start the application:
+6. Start the application:
 
     ```bash
     npm run start
     ```
-
-## Configuring Database Connections
-
-To configure the MySQL connection, you must create a `.env` file in the root directory of the project. This file will
-contain environment variables that store the database connection information. Here's how to set it up:
-
-1. In the root directory of the project, create a `.env` file:
-
-    ```bash
-    touch .env
-    ```
-
-### MySQL Configuration
-
-1. Open the `.env` file using a text editor.
-
-2. Add the following environment variables with your MySQL database information:
-
-    ```plaintext
-    MYSQLDB_HOST="your_mysql_host"             # "localhost"
-    MYSQLDB_PORT=your_mysql_port               # 3306
-    MYSQLDB_USER="your_mysql_user"             # "user"
-    MYSQLDB_PASSWORD="your_mysql_password"     # "password"
-    MYSQLDB_NAME="your_mysql_database_name"    # "mydb"
-    ```
-
-   Replace `your_mysql_host`, `your_mysql_port`, `your_mysql_user`, `your_mysql_password`,
-   and `your_mysql_database_name` with your actual MySQL database details.
-
-### MongoDB Configuration
-
-1. Open the `.env` file using a text editor.
-
-2. Add the following environment variables with your MongoDB database information:
-
-    ```plaintext
-    MONGODB_URI="your_mongodb_uri"             # "mongodb://localhost/your-database-name"
-    ```
-
-   Replace `your_mongodb_uri` with your actual MongoDB database details.
 
 ## Contributing
 

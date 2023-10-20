@@ -20,18 +20,14 @@
  */
 import {Router} from 'express';
 import TermController from "../controllers/TermController";
-import authMiddleware from "../middlewares/AuthMiddleware";
-import {UserRoles} from "../models/User";
 
 const router: Router = Router();
 const termController: TermController = new TermController();
 
-const requireAdmin = authMiddleware([UserRoles.Admin]);
-
-router.get('/', requireAdmin, termController.getAll);
-router.get('/:id', requireAdmin, termController.getById);
-router.post('/', requireAdmin, termController.insert);
-router.put('/:id', requireAdmin, termController.update);
-router.delete('/:id', requireAdmin, termController.delete);
+router.get('/', termController.getAll);
+router.get('/:id', termController.getById);
+router.post('/', termController.insert);
+router.put('/:id', termController.update);
+router.delete('/:id', termController.delete);
 
 export default router;

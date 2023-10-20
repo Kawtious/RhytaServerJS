@@ -35,16 +35,13 @@ import {EntitySchema} from "typeorm/entity-schema/EntitySchema";
 const entities: MixedList<Function | string | EntitySchema> = [Career, Course, Professor, ProfessorEvent, Term];
 
 let dataSourceOptions: DataSourceOptions = {
-    type: "mysql",
-    host: process.env.MYSQLDB_HOST,
-    port: Number(process.env.MYSQLDB_PORT),
-    username: process.env.MYSQLDB_USER,
-    password: process.env.MYSQLDB_PASSWORD,
-    database: process.env.MYSQLDB_NAME,
+    type: "sqlite",
+    database: ":memory:",
+    dropSchema: true,
     entities: entities,
     namingStrategy: new SnakeNamingStrategy(),
     synchronize: true,
     logging: false,
 };
 
-export const MySQLDataSource = new DataSource(dataSourceOptions);
+export const SQLiteDataSource = new DataSource(dataSourceOptions);

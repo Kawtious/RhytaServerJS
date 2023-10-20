@@ -20,18 +20,14 @@
  */
 import {Router} from 'express';
 import ProfessorEventController from "../controllers/ProfessorEventController";
-import authMiddleware from "../middlewares/AuthMiddleware";
-import {UserRoles} from "../models/User";
 
 const router: Router = Router();
 const professorEventController: ProfessorEventController = new ProfessorEventController();
 
-const requireAdmin = authMiddleware([UserRoles.Admin]);
-
-router.get('/:professorId', requireAdmin, professorEventController.getAllByProfessorId);
-router.get('/:professorId/:eventId', requireAdmin, professorEventController.getByProfessorId);
-router.post('/:professorId', requireAdmin, professorEventController.insertByProfessorId);
-router.put('/:professorId/:eventId', requireAdmin, professorEventController.updateByProfessorId);
-router.delete('/:professorId/:eventId', requireAdmin, professorEventController.deleteByProfessorId);
+router.get('/:professorId', professorEventController.getAllByProfessorId);
+router.get('/:professorId/:eventId', professorEventController.getByProfessorId);
+router.post('/:professorId', professorEventController.insertByProfessorId);
+router.put('/:professorId/:eventId', professorEventController.updateByProfessorId);
+router.delete('/:professorId/:eventId', professorEventController.deleteByProfessorId);
 
 export default router;

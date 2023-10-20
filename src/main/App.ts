@@ -20,14 +20,12 @@
  */
 import express from 'express';
 import bodyParser from 'body-parser';
-import authRouter from "./routers/AuthRouter";
 import careerRouter from './routers/CareerRouter';
 import courseRouter from './routers/CourseRouter';
 import professorRouter from './routers/ProfessorRouter';
 import termRouter from './routers/TermRouter';
 import professorEventRouter from "./routers/ProfessorEventRouter";
-import {MongoDataSource} from "./configuration/MongoDataSource";
-import {MySQLDataSource} from "./configuration/MySQLDataSource";
+import {SQLiteDataSource} from "./configuration/SQLiteDataSource";
 import {errorHandler} from "./middlewares/ErrorHandlerMiddleware";
 
 const app = express();
@@ -35,7 +33,6 @@ const bodyParse = bodyParser.json();
 
 app.use(bodyParse);
 
-app.use('/auth', authRouter);
 app.use('/careers', careerRouter);
 app.use('/courses', courseRouter);
 app.use('/professors', professorRouter);
@@ -44,10 +41,7 @@ app.use('/terms', termRouter);
 
 app.use(errorHandler);
 
-MongoDataSource.initialize()
-    .then(() => {
-        return MySQLDataSource.initialize();
-    })
+SQLiteDataSource.initialize()
     .then(() => {
         const host: string = process.env.SERVER_HOST || 'localhost';
         const port: number = Number(process.env.SERVER_PORT as string) || 3000;

@@ -1,6 +1,6 @@
 {
   "name": "rhyta-example-client",
-  "version": "1.0.0",
+  "version": "1.0.0-minimal-config",
   "description": "",
   "scripts": {
     "build": "tsc",

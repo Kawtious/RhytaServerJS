@@ -24,21 +24,18 @@
 require('dotenv').config();
 
 import readlineSync from 'readline-sync';
-import AuthView from "./views/AuthView";
 import CareerView from './views/CareerView';
 import CourseView from './views/CourseView';
 import ProfessorView from './views/ProfessorView';
 import ProfessorEventView from './views/ProfessorEventView';
 import TermView from './views/TermView';
 
-const authEndpoint: string = 'auth';
 const careerEndpoint: string = 'careers';
 const courseEndpoint: string = 'courses';
 const professorEndpoint: string = 'professors';
 const professorEventEndpoint: string = 'events';
 const termEndpoint: string = 'terms';
 
-const authView: AuthView = new AuthView(authEndpoint);
 const careerView: CareerView = new CareerView(careerEndpoint);
 const courseView: CourseView = new CourseView(courseEndpoint);
 const professorView: ProfessorView = new ProfessorView(professorEndpoint);
@@ -53,7 +50,6 @@ const termView: TermView = new TermView(termEndpoint);
         console.log('3. Professor');
         console.log('4. Professor Event');
         console.log('5. Term');
-        console.log('6. Auth');
         console.log('0. Exit');
 
         const choice = readlineSync.question('Enter your choice: ');
@@ -73,9 +69,6 @@ const termView: TermView = new TermView(termEndpoint);
                 break;
             case '5':
                 await termView.show();
-                break;
-            case '6':
-                await authView.show();
                 break;
             case '0':
                 return;

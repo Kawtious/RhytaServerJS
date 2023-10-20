@@ -31,12 +31,3 @@ export const axiosInstance: AxiosInstance = axios.create({
         'Content-Type': 'application/json',
     },
 });
-
-let authToken: string | null = 'YOUR_INITIAL_BEARER_TOKEN';
-
-axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
-
-export function updateAuthToken(newToken: string) {
-    authToken = newToken;
-    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
-}

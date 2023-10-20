@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-import {MySQLDataSource} from "../configuration/MySQLDataSource";
+import {SQLiteDataSource} from "../configuration/SQLiteDataSource";
 import {Career} from "../models/Career";
 
-export const careerRepository = MySQLDataSource.getRepository(Career);
+export const careerRepository = SQLiteDataSource.getRepository(Career);
